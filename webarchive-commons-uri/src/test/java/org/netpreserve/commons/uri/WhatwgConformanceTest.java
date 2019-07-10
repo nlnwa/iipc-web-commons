@@ -33,8 +33,8 @@ import static org.assertj.core.api.Assertions.*;
  * Tests for the WHATWG conformant configuration.
  * <p>
  * The test cases are from
- * <a href="https://github.com/w3c/web-platform-tests/blob/master/url/urltestdata.json">
- * https://github.com/w3c/web-platform-tests/blob/master/url/urltestdata.json</a>
+ * <a href="https://github.com/web-platform-tests/wpt/blob/master/url/resources/urltestdata.json">
+ * https://github.com/web-platform-tests/wpt/blob/master/url/resources/urltestdata.json</a>
  */
 public class WhatwgConformanceTest {
 
