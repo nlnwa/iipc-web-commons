@@ -35,3 +35,7 @@ buildNumber.properties
 
 # PDT-specific
 .buildpath
+
+# IDEA
+.idea
+*.iml
