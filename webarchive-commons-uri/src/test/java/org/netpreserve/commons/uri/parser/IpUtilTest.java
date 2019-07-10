@@ -113,10 +113,16 @@ public class IpUtilTest {
     @Test
     public void testCheckAndNormalizeIpv4() {
         assertThat(IpUtil.checkAndNormalizeIpv4("192.168.0.1")).isEqualTo("192.168.0.1");
+        assertThat(IpUtil.checkAndNormalizeIpv4("192.168.0.1.")).isEqualTo("192.168.0.1");
+        assertThat(IpUtil.checkAndNormalizeIpv4("0xc0.0250.01")).isEqualTo("192.168.0.1");
         assertThat(IpUtil.checkAndNormalizeIpv4("0Xc0.0250.01")).isEqualTo("192.168.0.1");
         assertThat(IpUtil.checkAndNormalizeIpv4("%30%78%63%30%2e%30%32%35%30.01")).isEqualTo("192.168.0.1");
         assertThat(IpUtil.checkAndNormalizeIpv4("%30%78%63%30%2e%30%32%35%30.01%2e")).isEqualTo("192.168.0.1");
         assertThatExceptionOfType(UriException.class).isThrownBy(() -> IpUtil.checkAndNormalizeIpv4("192.168.0.257"));
         assertThat(IpUtil.checkAndNormalizeIpv4("not an ip 192.168.0.1")).isNull();
+        assertThat(IpUtil.checkAndNormalizeIpv4("8584905.fls.doubleclick.net")).isNull();
+        assertThat(IpUtil.checkAndNormalizeIpv4("8584905.123.doubleclick.net")).isNull();
+        assertThat(IpUtil.checkAndNormalizeIpv4("8584905.654.doubleclick.eet")).isNull();
+        assertThatExceptionOfType(UriException.class).isThrownBy(() -> IpUtil.checkAndNormalizeIpv4("8584905.168.0.254"));
     }
 }

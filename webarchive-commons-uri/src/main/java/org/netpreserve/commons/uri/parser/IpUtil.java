@@ -297,15 +297,17 @@ public final class IpUtil {
             }
             try {
                 numbers[i] = Integer.decode(octet);
-                if (numbers[i] > 255) {
-                    if (i < (octetCount - 1)) {
-                        throw new UriException("Illegal IPv4 address: " + ipv4Address);
-                    } else if (numbers[i] >= Math.pow(256, 5 - octetCount)) {
-                        throw new UriException("Illegal IPv4 address: " + ipv4Address);
-                    }
-                }
             } catch (NumberFormatException e) {
                 return null;
+            }
+        }
+        for (int i = 0; i < octetCount; i++) {
+            if (numbers[i] > 255) {
+                if (i < (octetCount - 1)) {
+                    throw new UriException("Illegal IPv4 address: " + ipv4Address);
+                } else if (numbers[i] >= Math.pow(256, 5 - octetCount)) {
+                    throw new UriException("Illegal IPv4 address: " + ipv4Address);
+                }
             }
         }
 
